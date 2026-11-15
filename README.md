@@ -5,7 +5,10 @@
 O Brinca João é um site de minigames infantis acessíveis, calmos e gratuitos, para brincar no
 próprio ritmo. Não tem anúncios, cadastro nem coleta de dados: tudo roda no navegador.
 
-_Feito com amor para João Lucas 💙_
+**No ar:** [brincajoao.netlify.app](https://brincajoao.netlify.app/)
+
+_Feito com amor para João Lucas 💙_ · Criado por
+[Gustavo Madeira](https://gustavomadeira-portfolio.netlify.app/)
 
 ---
 
@@ -53,7 +56,9 @@ As decisões seguem as recomendações da WCAG 2.2 nível AA sempre que aplicáv
 
 ## Privacidade
 
-- Sem anúncios, sem rastreadores, sem cadastro e sem links para fora do site.
+- Sem anúncios, sem rastreadores e sem cadastro.
+- O único link para fora do site é o crédito do criador, pequeno e no rodapé. As telas de jogo não
+  têm rodapé nem links externos.
 - Fontes e imagens ficam no próprio site: nenhuma requisição vai para terceiros.
 - O `localStorage` guarda apenas preferências, progresso e o desenho em andamento — sempre no
   próprio aparelho. Em **Configurações → Para a família** há um botão para apagar tudo.
@@ -137,9 +142,12 @@ git push -u origin main
   ligar um domínio próprio.
 - **Rotas diretas:** abrir `https://seu-site/jogos/memoria` direto funciona, porque o
   `netlify.toml` devolve o `index.html` para qualquer endereço.
-- **Imagem de compartilhamento (opcional):** para a prévia aparecer no WhatsApp e em redes
-  sociais, troque no [`index.html`](index.html) o valor de `og:image` pelo endereço completo, por
-  exemplo `https://seu-site.netlify.app/social-card.png`.
+- **Endereço do site:** os metadados de compartilhamento do [`index.html`](index.html)
+  (`canonical`, `og:url` e `og:image`) usam o endereço completo `https://brincajoao.netlify.app/`.
+  Se o endereço mudar, atualize esses três valores para a prévia continuar aparecendo no WhatsApp
+  e nas redes sociais.
+- **Envio manual:** sem repositório conectado, rode `npm run build` e arraste a pasta `dist` para a
+  área de deploys do projeto no Netlify.
 
 > O site define uma política de segurança de conteúdo que só permite recursos do próprio site.
 > Se um dia você incluir algo de outro endereço (uma fonte, um vídeo, um serviço), será preciso
@@ -217,7 +225,7 @@ Para ampliar o conteúdo que já existe:
 
 ## Testes
 
-`npm test` roda 165 testes em 18 arquivos:
+`npm test` roda 166 testes em 18 arquivos:
 
 - **Lógica de cada jogo:** toda rodada de cores tem exatamente uma resposta certa, cada forma tem
   um lugar, o baralho tem pares completos, as peças vizinhas do quebra-cabeça se encaixam.

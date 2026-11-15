@@ -46,9 +46,26 @@ describe('página inicial', () => {
     );
   });
 
-  it('não leva a criança para fora do site', () => {
+  it('o único link para fora do site é o crédito do criador, no rodapé', () => {
     renderApp('/');
-    // Só endereços do próprio site ("/...") ou âncoras da própria página ("#...").
+    // Todo o resto são endereços do próprio site ("/...") ou âncoras da página ("#...").
+    const external = screen
+      .getAllByRole('link')
+      .filter((link) => !/^[/#]/.test(link.getAttribute('href') ?? ''));
+
+    expect(external).toHaveLength(1);
+    const credit = external[0]!;
+    expect(credit).toHaveAccessibleName(/Gustavo Madeira/);
+    expect(credit).toHaveAttribute('href', 'https://gustavomadeira-portfolio.netlify.app/');
+    expect(credit).toHaveAttribute('target', '_blank');
+    expect(credit).toHaveAttribute('rel', expect.stringContaining('noopener'));
+    expect(credit.closest('footer')).not.toBeNull();
+  });
+
+  it('as telas de jogo não têm rodapé nem links para fora', async () => {
+    renderApp('/jogos/animais');
+    await screen.findByRole('button', { name: 'Gato' });
+    expect(screen.queryByText(/Criado por/)).not.toBeInTheDocument();
     screen.getAllByRole('link').forEach((link) => {
       expect(link.getAttribute('href')).toMatch(/^[/#]/);
     });
