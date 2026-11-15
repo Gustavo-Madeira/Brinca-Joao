@@ -1,0 +1,9 @@
+/*
+ * Sem largura aqui de propósito: quem usa o Pipo define o tamanho com a
+ * própria classe, sem disputar prioridade com esta regra.
+ */
+.pipo {
+  display: block;
+  height: auto;
+  overflow: visible;
+}

@@ -1,0 +1,172 @@
+/* Papel: ocupa a largura disponível, sem passar de ~58% da altura da tela. */
+.paper {
+  --aspect: 1.3333;
+  position: relative;
+  width: 100%;
+  max-width: calc(58vh * var(--aspect));
+  min-width: min(100%, 16rem);
+  margin: 0 auto;
+  border: 0.1875rem solid var(--theme-500);
+  border-radius: var(--radius-md);
+  background-color: var(--white);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+/* Mantém a proporção mesmo em navegadores sem `aspect-ratio`. */
+.paper::before {
+  content: '';
+  display: block;
+  padding-top: calc(100% / var(--aspect));
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  /* O dedo no papel desenha; não rola nem dá zoom na página. */
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.canvas:focus-visible {
+  outline-offset: -0.375rem;
+}
+
+/* Mira do teclado */
+.cursor {
+  position: absolute;
+  display: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: -0.75rem 0 0 -0.75rem;
+  border: 0.1875rem solid var(--ink);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 0.125rem var(--white);
+  pointer-events: none;
+}
+
+.cursor[data-down='true'] {
+  background-color: var(--sun-400);
+}
+
+.canvas:focus-visible ~ .cursor {
+  display: block;
+}
+
+/* Ferramentas */
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.875rem;
+  padding: 1rem;
+  border: 0.1875rem solid var(--theme-200);
+  border-radius: var(--radius-lg);
+  background-color: var(--white);
+}
+
+@media (min-width: 52rem) {
+  .toolbar {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 1.5rem;
+  }
+}
+
+.colors {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  padding: 0;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.swatchLabel {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.swatchInput {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.swatch {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: 3.5rem;
+  min-height: 2.75rem;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  border: 0.1875rem solid rgba(31, 43, 77, 0.28);
+  border-radius: 50%;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+/* Cor escolhida: aro escuro em volta e um ✓ no meio. */
+.swatchInput:checked + .swatch {
+  border-color: var(--white);
+  box-shadow: 0 0 0 0.1875rem var(--ink);
+  transform: scale(1.06);
+}
+
+.swatchInput:focus-visible + .swatch {
+  outline: 0.1875rem solid var(--focus-ring);
+  outline-offset: 0.3125rem;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.875rem;
+}
+
+@media (min-width: 34rem) and (max-width: 51.99rem) {
+  .controls {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  }
+}
+
+.help {
+  font-size: var(--text-sm);
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* Em telas de toque sem teclado, a dica do teclado não precisa aparecer. */
+@media (hover: none) and (pointer: coarse) {
+  .help {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+}

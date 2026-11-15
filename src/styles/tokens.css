@@ -1,0 +1,183 @@
+/*
+ * Identidade visual do Brinca João: "um céu de brincadeiras".
+ * Tons suaves de azul, amarelo, verde e lilás, com texto azul-marinho
+ * de alto contraste. Tudo é medido em rem para acompanhar o ajuste de
+ * "Tamanho" das configurações.
+ */
+
+:root {
+  /* Céu e azul (cor principal) */
+  --sky-50: #f4faff;
+  --sky-100: #e3f2ff;
+  --sky-200: #cfe8ff;
+  --sky-300: #a9d6ff;
+  --blue-400: #62aef5;
+  --blue-500: #3d8fe8;
+  --blue-600: #2670d3;
+  --blue-700: #1d58aa;
+  --blue-800: #17437f;
+
+  /* Sol (amarelo) */
+  --sun-100: #fff6d1;
+  --sun-200: #ffeba3;
+  --sun-300: #ffde6b;
+  --sun-400: #ffcf33;
+  --sun-500: #f2b600;
+  --sun-600: #c48f00;
+  --sun-700: #7a5600;
+
+  /* Folha (verde) */
+  --leaf-100: #dff6e7;
+  --leaf-200: #c3eed3;
+  --leaf-300: #92ddb0;
+  --leaf-400: #5fcb8e;
+  --leaf-500: #33ae6c;
+  --leaf-700: #1c7046;
+
+  /* Lilás */
+  --lilac-100: #f1ebff;
+  --lilac-200: #e2d7ff;
+  --lilac-300: #c9b6ff;
+  --lilac-400: #ac92f5;
+  --lilac-500: #8b6ce0;
+  --lilac-700: #5a3fb3;
+
+  /* Pêssego e rosa (apoio) */
+  --peach-100: #ffecdf;
+  --peach-200: #ffdcc4;
+  --peach-300: #ffbf96;
+  --peach-500: #f08a4b;
+  --peach-700: #a8501a;
+  --rose-100: #ffe8f0;
+  --rose-200: #ffd3e2;
+  --rose-300: #ffaecb;
+  --rose-500: #e86a9a;
+  --rose-700: #a93766;
+
+  /* Neutros */
+  --ink: #1f2b4d;
+  --ink-soft: #45517a;
+  --line: #d5deee;
+  --line-strong: #7c8bae;
+  --white: #ffffff;
+  --paper: #ffffff;
+
+  /* Papéis */
+  --page-bg-top: #d9eeff;
+  --page-bg-mid: #f1f8ff;
+  --page-bg-bottom: #fffaea;
+  --focus-ring: #1f2b4d;
+  --success: var(--leaf-700);
+  --success-bg: var(--leaf-100);
+
+  /* Tema padrão (cada jogo troca estas variáveis) */
+  --theme-100: var(--sky-100);
+  --theme-200: var(--sky-200);
+  --theme-300: var(--sky-300);
+  --theme-500: var(--blue-500);
+  --theme-700: var(--blue-700);
+
+  /* Tipografia */
+  --font-body:
+    'Nunito', ui-rounded, 'Segoe UI', system-ui, -apple-system, 'Roboto', 'Helvetica Neue', Arial,
+    sans-serif;
+  --font-display: 'Fredoka', 'Nunito', ui-rounded, 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --text-sm: 0.9375rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.3125rem;
+  --text-xl: 1.625rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.5rem;
+
+  /* Espaços */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+  /* Cantos */
+  --radius-sm: 0.75rem;
+  --radius-md: 1.125rem;
+  --radius-lg: 1.625rem;
+  --radius-xl: 2.25rem;
+  --radius-pill: 999px;
+
+  /* Sombras suaves */
+  --shadow-sm: 0 0.125rem 0.375rem rgba(31, 43, 77, 0.08);
+  --shadow-md: 0 0.25rem 1rem rgba(31, 43, 77, 0.1);
+  --shadow-lg: 0 0.75rem 2rem rgba(31, 43, 77, 0.14);
+
+  /* Movimento */
+  --dur-fast: 140ms;
+  --dur-med: 260ms;
+  --dur-slow: 480ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  /* Área de toque mínima confortável para crianças */
+  --tap: 3.25rem;
+
+  --content-max: 68rem;
+}
+
+/* Temas dos jogos */
+[data-theme='sky'] {
+  --theme-100: var(--sky-100);
+  --theme-200: var(--sky-200);
+  --theme-300: var(--sky-300);
+  --theme-500: var(--blue-500);
+  --theme-700: var(--blue-700);
+}
+
+[data-theme='sun'] {
+  --theme-100: var(--sun-100);
+  --theme-200: var(--sun-200);
+  --theme-300: var(--sun-300);
+  --theme-500: var(--sun-500);
+  --theme-700: var(--sun-700);
+}
+
+[data-theme='leaf'] {
+  --theme-100: var(--leaf-100);
+  --theme-200: var(--leaf-200);
+  --theme-300: var(--leaf-300);
+  --theme-500: var(--leaf-500);
+  --theme-700: var(--leaf-700);
+}
+
+[data-theme='lilac'] {
+  --theme-100: var(--lilac-100);
+  --theme-200: var(--lilac-200);
+  --theme-300: var(--lilac-300);
+  --theme-500: var(--lilac-500);
+  --theme-700: var(--lilac-700);
+}
+
+[data-theme='peach'] {
+  --theme-100: var(--peach-100);
+  --theme-200: var(--peach-200);
+  --theme-300: var(--peach-300);
+  --theme-500: var(--peach-500);
+  --theme-700: var(--peach-700);
+}
+
+[data-theme='rose'] {
+  --theme-100: var(--rose-100);
+  --theme-200: var(--rose-200);
+  --theme-300: var(--rose-300);
+  --theme-500: var(--rose-500);
+  --theme-700: var(--rose-700);
+}
+
+/* Modo calmo: fundo liso e neutro, sombras mais discretas. */
+:root[data-calm='true'] {
+  --page-bg-top: #f3f6fa;
+  --page-bg-mid: #f3f6fa;
+  --page-bg-bottom: #f3f6fa;
+  --shadow-sm: 0 0.0625rem 0.125rem rgba(31, 43, 77, 0.06);
+  --shadow-md: 0 0.125rem 0.375rem rgba(31, 43, 77, 0.07);
+  --shadow-lg: 0 0.25rem 0.75rem rgba(31, 43, 77, 0.09);
+}

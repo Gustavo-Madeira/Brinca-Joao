@@ -1,0 +1,5 @@
+/* Ponto único de entrada dos estilos globais. A ordem importa. */
+@import './fonts.css';
+@import './tokens.css';
+@import './base.css';
+@import './animations.css';

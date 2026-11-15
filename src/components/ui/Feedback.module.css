@@ -1,0 +1,51 @@
+.feedback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  /* Altura reservada: a tela não "pula" quando a mensagem muda. */
+  min-height: 3.25rem;
+  padding: 0.625rem 1rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+}
+
+/* Vazia, a faixa continua existindo (para o leitor de tela), só fica invisível. */
+.feedback.empty {
+  background-color: transparent;
+}
+
+.icon {
+  flex: none;
+}
+
+.neutro {
+  background-color: var(--sky-100);
+  color: var(--ink);
+}
+
+.neutro .icon {
+  color: var(--blue-600);
+}
+
+.acerto {
+  background-color: var(--leaf-100);
+  color: var(--leaf-700);
+}
+
+.acerto .icon {
+  color: var(--sun-500);
+}
+
+.carinho {
+  background-color: var(--sun-100);
+  color: var(--ink);
+}
+
+.carinho .icon {
+  color: var(--blue-500);
+}

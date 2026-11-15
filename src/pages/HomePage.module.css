@@ -1,0 +1,151 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0 0.5rem;
+  text-align: center;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.heroTitle {
+  line-height: 1;
+}
+
+.tagline {
+  max-width: 22rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 5vw, 1.625rem);
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.heroActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.heroArt {
+  width: min(100%, 26rem);
+  height: auto;
+  margin: 0 auto;
+  /* No celular, a ilustração vem antes do texto. */
+  order: -1;
+  overflow: visible;
+}
+
+@media (min-width: 56rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    padding: 2rem 0 1.5rem;
+    text-align: left;
+  }
+
+  .heroText {
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .tagline {
+    max-width: 26rem;
+  }
+
+  .heroActions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .heroArt {
+    order: 0;
+    width: min(100%, 32rem);
+  }
+}
+
+/* Atalhos para os jogos */
+.games {
+  margin-top: 2rem;
+}
+
+.gamesTitle {
+  margin-bottom: 1rem;
+  font-size: var(--text-xl);
+  text-align: center;
+}
+
+.gameList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 36rem) {
+  .gameList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 60rem) {
+  .gameList {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  height: 100%;
+  padding: 0.875rem 0.625rem;
+  border: 0.1875rem solid var(--theme-300);
+  border-radius: var(--radius-lg);
+  background-color: var(--theme-100);
+  box-shadow: 0 0.25rem 0 var(--theme-300);
+  text-align: center;
+  text-decoration: none;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+@media (hover: hover) {
+  .tile:hover {
+    background-color: var(--theme-200);
+  }
+}
+
+.tile:active {
+  transform: translateY(0.1875rem);
+  box-shadow: 0 0.0625rem 0 var(--theme-300);
+}
+
+.tileArt {
+  width: 100%;
+  max-width: 8.5rem;
+  height: auto;
+}
+
+.tileName {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 600;
+  line-height: 1.2;
+}

@@ -1,0 +1,162 @@
+.row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: 'icon text control';
+  align-items: center;
+  column-gap: 0.875rem;
+  width: 100%;
+  min-height: 4.5rem;
+  padding: 0.75rem 1rem;
+  border: 0.125rem solid var(--line);
+  border-radius: var(--radius-md);
+  background-color: var(--white);
+  text-align: left;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .row:hover:not(.disabled) {
+    background-color: var(--sky-50);
+    border-color: var(--line-strong);
+  }
+}
+
+.on {
+  border-color: var(--leaf-500);
+  background-color: #f4fcf7;
+}
+
+.disabled {
+  cursor: default;
+  background-color: #f6f8fb;
+}
+
+.icon {
+  grid-area: icon;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background-color: var(--sky-100);
+  color: var(--blue-700);
+}
+
+.on .icon {
+  background-color: var(--leaf-100);
+  color: var(--leaf-700);
+}
+
+.text {
+  grid-area: text;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.description {
+  margin-top: 0.125rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink-soft);
+}
+
+.control {
+  grid-area: control;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 5.25rem;
+}
+
+.track {
+  position: relative;
+  display: block;
+  width: 3.75rem;
+  height: 2.125rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--line-strong);
+  transition: background-color var(--dur-med) var(--ease-out);
+}
+
+.on .track {
+  background-color: var(--leaf-500);
+}
+
+.disabled .track {
+  opacity: 0.55;
+}
+
+.thumb {
+  position: absolute;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background-color: var(--white);
+  color: var(--leaf-700);
+  box-shadow: 0 0.0625rem 0.1875rem rgba(31, 43, 77, 0.3);
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.on .thumb {
+  transform: translateX(1.625rem);
+}
+
+.state {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+}
+
+.on .state {
+  color: var(--leaf-700);
+}
+
+/*
+ * Telas estreitas: o ícone (que é só enfeite) some, o nome divide a linha
+ * com o interruptor e a explicação ocupa a linha de baixo inteira. Assim
+ * nada fica espremido, mesmo com o tamanho "Bem grande".
+ */
+@media (max-width: 30rem) {
+  .row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'label control'
+      'desc desc';
+    row-gap: 0.375rem;
+  }
+
+  .icon {
+    display: none;
+  }
+
+  .text {
+    display: contents;
+  }
+
+  .label {
+    grid-area: label;
+  }
+
+  .description {
+    grid-area: desc;
+    margin-top: 0;
+  }
+}

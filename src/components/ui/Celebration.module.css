@@ -1,0 +1,167 @@
+.panel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border: 0.1875rem solid var(--sun-400);
+  border-radius: var(--radius-lg);
+  background-color: var(--sun-100);
+  overflow: hidden;
+}
+
+.pipo {
+  flex: none;
+  width: 5.5rem;
+}
+
+.content {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.stars {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.125rem;
+  margin-bottom: 0.25rem;
+  color: var(--sun-500);
+}
+
+/* As três estrelas aparecem uma depois da outra. */
+.star:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.star:nth-child(3) {
+  animation-delay: 240ms;
+}
+
+.title {
+  font-size: var(--text-xl);
+}
+
+.message {
+  margin-top: 0.25rem;
+  font-size: var(--text-md);
+  color: var(--ink-soft);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Confete: poucos papeizinhos, queda lenta, uma única vez. */
+.confetti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.piece {
+  position: absolute;
+  top: -1rem;
+  width: 0.625rem;
+  height: 0.875rem;
+  opacity: 0;
+  animation-name: confettiDrop;
+  animation-timing-function: cubic-bezier(0.3, 0.2, 0.6, 1);
+  animation-fill-mode: both;
+}
+
+@keyframes confettiDrop {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  12% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift, 0), 18rem, 0) rotate(var(--spin, 200deg));
+  }
+}
+
+/*
+ * Versão empilhada e compacta, para caber junto com a brincadeira pronta:
+ * o primeiro botão ocupa a linha inteira e os outros dividem a linha de baixo.
+ * Vale para colunas estreitas (classe `stacked`) e para telas estreitas.
+ */
+.stacked {
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.stacked .pipo {
+  width: 3.75rem;
+}
+
+.stacked .stars,
+.stacked .actions {
+  justify-content: center;
+}
+
+.stacked .actions {
+  gap: 0.625rem;
+  margin-top: 0.75rem;
+}
+
+.stacked .actions > * {
+  flex: 1 1 calc(50% - 0.625rem);
+  min-width: 0;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: var(--text-md);
+}
+
+.stacked .actions > :first-child {
+  flex-basis: 100%;
+  font-size: var(--text-lg);
+}
+
+@media (max-width: 30rem) {
+  .panel {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .panel .pipo {
+    width: 3.75rem;
+  }
+
+  .panel .stars,
+  .panel .actions {
+    justify-content: center;
+  }
+
+  .panel .actions {
+    gap: 0.625rem;
+    margin-top: 0.75rem;
+  }
+
+  .panel .actions > * {
+    flex: 1 1 calc(50% - 0.625rem);
+    min-width: 0;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    font-size: var(--text-md);
+  }
+
+  .panel .actions > :first-child {
+    flex-basis: 100%;
+    font-size: var(--text-lg);
+  }
+}

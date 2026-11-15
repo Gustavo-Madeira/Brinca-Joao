@@ -1,0 +1,138 @@
+/*
+ * Animações compartilhadas. Todas são lentas e suaves: nada pisca,
+ * nada treme forte, nada aparece de repente.
+ *
+ * Como usar: aplique a classe utilitária (por exemplo `bj-pop-in`) no
+ * elemento. Os arquivos *.module.css não devem citar estes @keyframes pelo
+ * nome, porque os CSS Modules trocam nomes de animação por nomes locais.
+ *
+ * Todas param sozinhas quando o movimento está desligado (veja base.css).
+ */
+
+@keyframes bj-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.5rem);
+  }
+}
+
+@keyframes bj-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bj-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bj-pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Balanço bem leve, usado quando um bichinho "responde" ao toque. */
+@keyframes bj-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-4deg) scale(1.04);
+  }
+  50% {
+    transform: rotate(0deg) scale(1.06);
+  }
+  75% {
+    transform: rotate(4deg) scale(1.04);
+  }
+}
+
+/* Convite gentil para "tente outro lugar": um vai e vem curto, uma única vez. */
+@keyframes bj-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(-0.25rem);
+  }
+  65% {
+    transform: translateX(0.25rem);
+  }
+}
+
+/* Brilho calmo que respira devagar, para destacar uma dica. */
+@keyframes bj-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0.1875rem var(--sun-500),
+      0 0 0 0.4375rem rgba(255, 207, 51, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 0 0.1875rem var(--sun-500),
+      0 0 0 0.875rem rgba(255, 207, 51, 0.16);
+  }
+}
+
+.bj-float {
+  animation: bj-float 5.5s ease-in-out infinite;
+}
+
+.bj-fade-in {
+  animation: bj-fade-in var(--dur-med) var(--ease-out) both;
+}
+
+.bj-rise-in {
+  animation: bj-rise-in var(--dur-slow) var(--ease-out) both;
+}
+
+.bj-pop-in {
+  animation: bj-pop-in var(--dur-slow) var(--ease-bounce) both;
+}
+
+.bj-wiggle {
+  animation: bj-wiggle 800ms ease-in-out both;
+}
+
+.bj-nudge {
+  animation: bj-nudge 420ms ease-in-out both;
+}
+
+/*
+ * Destaque de dica. O contorno amarelo-escuro fica parado (e continua
+ * visível com as animações desligadas); só o halo em volta "respira".
+ * O `:root` na frente garante que o destaque vença a sombra própria do
+ * botão, não importa a ordem em que os arquivos de estilo carregam.
+ */
+:root .bj-glow {
+  box-shadow:
+    0 0 0 0.1875rem var(--sun-500),
+    0 0 0 0.4375rem rgba(255, 207, 51, 0.4);
+  animation: bj-glow 2.4s ease-in-out infinite;
+}

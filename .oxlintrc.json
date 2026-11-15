@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc", "jsx-a11y"],
+  "categories": {
+    "correctness": "error"
+  },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "warn",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }],
+
+    // Desligada de propósito: o site usa SVG embutido com role="img" (o jeito
+    // recomendado de descrever um desenho SVG), mensagens com role="status" e
+    // grupos com role="group". Trocar por <img>, <output> ou <fieldset> não
+    // melhoraria a acessibilidade nesses casos.
+    "jsx-a11y/prefer-tag-over-role": "off"
+  },
+  "ignorePatterns": ["dist", "node_modules"]
+}

@@ -1,0 +1,132 @@
+.board,
+.tray {
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+}
+
+.board {
+  border: 0.1875rem solid var(--theme-300);
+  background-color: var(--white);
+}
+
+.tray {
+  border: 0.1875rem dashed var(--theme-300);
+  background-color: var(--theme-100);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-items: center;
+  gap: 0.75rem;
+}
+
+.grid[data-count='4'] {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (min-width: 40rem) {
+  .grid[data-count='6'] {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.cell {
+  width: 100%;
+  max-width: 8.5rem;
+}
+
+.slot,
+.piece {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: 0.375rem;
+  border-radius: var(--radius-md);
+}
+
+.figure {
+  width: 100%;
+  height: auto;
+}
+
+/* Lugar vazio */
+.slot {
+  border: 0.1875rem solid transparent;
+  background-color: var(--sky-50);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .slot:hover:not(.filled) {
+    border-color: var(--line-strong);
+  }
+}
+
+/* Peça passando por cima durante o arrasto. */
+.slot[data-drag-over='true'] {
+  border-color: var(--sun-500);
+  background-color: var(--sun-100);
+}
+
+.filled {
+  background-color: var(--leaf-100);
+}
+
+.badge {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.375rem;
+  display: grid;
+  place-items: center;
+  width: 1.875rem;
+  height: 1.875rem;
+  border: 0.1875rem solid var(--white);
+  border-radius: 50%;
+  background-color: var(--leaf-500);
+  color: var(--white);
+}
+
+/* Peça na bandeja */
+.piece {
+  border: 0.1875rem solid var(--line-strong);
+  background-color: var(--white);
+  box-shadow: 0 0.25rem 0 var(--line-strong);
+  cursor: grab;
+  /* Necessário para o arrasto com o dedo não virar rolagem da página. */
+  touch-action: none;
+  transition:
+    transform var(--dur-med) var(--ease-out),
+    box-shadow var(--dur-med) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .piece:hover {
+    background-color: var(--sky-50);
+  }
+}
+
+/* Selecionada: sobe um pouquinho, ganha borda escura e fundo amarelo. */
+.selected {
+  border-color: var(--ink);
+  background-color: var(--sun-200);
+  box-shadow: 0 0.5rem 0 var(--sun-600);
+  transform: translateY(-0.25rem);
+}
+
+.piece[data-dragging='true'] {
+  box-shadow: var(--shadow-lg);
+  cursor: grabbing;
+}
+
+/* Espaço de uma peça que já foi encaixada. */
+.emptySpot {
+  aspect-ratio: 1;
+  border: 0.125rem dashed var(--theme-300);
+  border-radius: var(--radius-md);
+}
