@@ -1,0 +1,147 @@
+/* Figura-modelo */
+.target {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  border: 0.1875rem solid var(--theme-300);
+  border-radius: var(--radius-lg);
+  background-color: var(--theme-100);
+}
+
+.targetArt {
+  flex: none;
+  width: 6.5rem;
+  height: auto;
+  padding: 0.375rem;
+  border-radius: var(--radius-md);
+  /* Fundo branco: a cor da figura aparece como ela é. */
+  background-color: var(--white);
+}
+
+.targetText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.375rem;
+  min-width: 0;
+}
+
+.caption {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Opções */
+.options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.options[data-count='4'] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 34rem) {
+  .options[data-count='4'] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 48rem) {
+  .options[data-count='6'] {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 100%;
+  height: 100%;
+  min-height: 6.5rem;
+  padding: 0.625rem 0.375rem;
+  border: 0.1875rem solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background-color: var(--white);
+  box-shadow: 0 0.25rem 0 var(--line-strong);
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    opacity var(--dur-med) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .option:hover:not([aria-disabled='true']) {
+    background-color: var(--theme-100);
+  }
+}
+
+.option:active:not([aria-disabled='true']) {
+  transform: translateY(0.1875rem);
+  box-shadow: 0 0.0625rem 0 var(--line-strong);
+}
+
+.optionArt {
+  width: min(100%, 6.5rem);
+  height: auto;
+}
+
+/* Dentro das opções o nome da cor fica sem moldura e pode quebrar de linha. */
+.option .optionChip {
+  flex-wrap: wrap;
+  padding: 0;
+  border: 0;
+  background: none;
+  white-space: normal;
+  text-align: center;
+}
+
+/* Opção já tentada: fica apagadinha, sem "X" e sem vermelho. */
+.tried {
+  border-style: dashed;
+  box-shadow: none;
+  opacity: 0.45;
+}
+
+.solved .option:not(.correct) {
+  box-shadow: none;
+  opacity: 0.45;
+}
+
+.correct {
+  border-color: var(--leaf-500);
+  background-color: var(--leaf-100);
+  box-shadow: 0 0.25rem 0 var(--leaf-300);
+}
+
+/* Selo de "certo": um ✓, além da cor verde. */
+.badge {
+  position: absolute;
+  top: -0.625rem;
+  right: -0.375rem;
+  display: grid;
+  place-items: center;
+  width: 2.125rem;
+  height: 2.125rem;
+  border: 0.1875rem solid var(--white);
+  border-radius: 50%;
+  background-color: var(--leaf-500);
+  color: var(--white);
+}
+
+/* Espaço reservado para o botão "Próxima": a tela não pula quando ele aparece. */
+.next {
+  display: flex;
+  justify-content: center;
+  min-height: 4rem;
+}
