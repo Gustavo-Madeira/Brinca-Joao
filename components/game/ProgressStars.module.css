@@ -1,0 +1,30 @@
+.stars {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+/* Estrela apagada: só o contorno. Estrela acesa: cheia e dourada. */
+.star {
+  display: block;
+  color: transparent;
+  transition:
+    color var(--dur-med) var(--ease-out),
+    transform var(--dur-med) var(--ease-bounce);
+}
+
+.star svg {
+  stroke: var(--line-strong);
+  stroke-width: 1.5;
+}
+
+.on {
+  color: var(--sun-400);
+  transform: scale(1.1);
+}
+
+.on svg {
+  stroke: var(--sun-600);
+}

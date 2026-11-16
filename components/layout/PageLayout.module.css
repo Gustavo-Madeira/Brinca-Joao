@@ -1,0 +1,36 @@
+/* Aparece só quando recebe foco pelo teclado. */
+.skip {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 50;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--ink);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip:focus,
+.skip:focus-visible {
+  transform: translateY(0);
+  outline: 0.1875rem solid var(--sun-400);
+  outline-offset: 0.1875rem;
+}
+
+.main {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0.5rem 1rem 2.5rem;
+  padding-left: calc(1rem + env(safe-area-inset-left, 0px));
+  padding-right: calc(1rem + env(safe-area-inset-right, 0px));
+}
+
+.narrow {
+  max-width: 44rem;
+}

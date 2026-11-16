@@ -1,0 +1,44 @@
+.footer {
+  width: 100%;
+  margin-top: auto;
+  padding: 1.5rem 1rem;
+  padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+}
+
+.dedication {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.note {
+  margin-top: 0.25rem;
+  font-size: var(--text-sm);
+  color: var(--ink-soft);
+}
+
+/* Crédito do criador: pequeno e discreto, para adultos. */
+.credit {
+  margin-top: 0.75rem;
+  font-size: var(--text-sm);
+  color: var(--ink-soft);
+}
+
+.creditLink {
+  display: inline-block;
+  padding: 0.25rem 0.125rem;
+  border-radius: 0.25rem;
+  color: var(--blue-700);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 0.125rem;
+  text-underline-offset: 0.2em;
+}
+
+@media (hover: hover) {
+  .creditLink:hover {
+    color: var(--blue-800);
+  }
+}

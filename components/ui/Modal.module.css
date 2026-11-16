@@ -1,0 +1,72 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  background-color: rgba(31, 43, 77, 0.5);
+  overflow-y: auto;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 34rem;
+  max-height: calc(100vh - 2rem);
+  max-height: calc(100dvh - 2rem);
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  background-color: var(--paper);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1rem 0.75rem 1.5rem;
+}
+
+.title {
+  font-size: var(--text-xl);
+}
+
+.body {
+  padding: 0.25rem 1.5rem 1.25rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem 1.5rem;
+  border-top: 0.125rem solid var(--sky-100);
+}
+
+@media (max-width: 30rem) {
+  .header {
+    padding-left: 1.125rem;
+  }
+
+  .body {
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+  }
+
+  .footer {
+    padding: 0.875rem 1.125rem 1.25rem;
+  }
+
+  .footer > * {
+    flex: 1 1 100%;
+  }
+}

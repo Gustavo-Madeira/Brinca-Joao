@@ -1,0 +1,18 @@
+.dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1875rem;
+}
+
+.filled,
+.hollow {
+  display: block;
+  width: 0.625rem;
+  height: 0.625rem;
+  border: 0.125rem solid currentColor;
+  border-radius: 50%;
+}
+
+.filled {
+  background-color: currentColor;
+}
