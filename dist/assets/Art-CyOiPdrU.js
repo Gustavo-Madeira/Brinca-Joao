@@ -1,0 +1,1 @@
+import{_ as e}from"./audio-C0X-0Vj-.js";var t=e();function n({art:e,title:n,className:r}){return(0,t.jsx)(`svg`,{className:r,viewBox:`0 0 120 120`,role:n?`img`:void 0,"aria-label":n,"aria-hidden":!n||void 0,focusable:`false`,children:(0,t.jsx)(e,{})})}export{n as t};
